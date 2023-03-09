@@ -8,9 +8,9 @@ function NavBar() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/"><img rel="icon" src="/favicon.png" className="img"/> Le Musik</Navbar.Brand>
+          <Navbar.Brand href="/albums"><img rel="icon" src="/favicon.png" className="img"/> Le Musik</Navbar.Brand>
           <Nav className="justify-content-end">
-            <Nav.Link href="/">Albums</Nav.Link>
+            <Nav.Link href="/albums">Albums</Nav.Link>
             <Nav.Link href="/artists">Artists</Nav.Link>
           </Nav>
           <Navbar.Collapse className="justify-content-end">

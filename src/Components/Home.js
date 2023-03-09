@@ -5,32 +5,16 @@ function Home(){
 
     const [albums, setAlbums]=useState([])
 
-    // const user = {
-    //     username: "nick",
-    //     password: "password"
-    // }
-
-    // const loginObj = {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify(user)
-    // }
-
-
-    // fetch('/login', loginObj)
-    // .then(r => r.json())
-    // .then(data => console.log(data))
-
     useEffect(() =>{
-        fetch("/albums")
+        fetch("http://127.0.0.1:3000/albums")
         .then(r=>r.json())
         .then(setAlbums)
     },[])
 
     console.log(albums)
-    const albumCards = albums.map(album => {
+    const albumCards = albums ? albums.map(album => {
         return(<AlbumCard key={album.id} album={album}/>)
-    })
+    }) : null
 
     return (<>
     <h1 style={{textAlign: "center"}}>Albums</h1>

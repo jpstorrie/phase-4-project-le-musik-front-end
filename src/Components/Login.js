@@ -1,12 +1,12 @@
 import {useState} from "react";
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 function Login({updateUser}){
   const [formData, setFormData] = useState({username: "", password: ""});
   const [errors, setErrors] = useState([]);
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const {username, password} = formData;
 
@@ -23,14 +23,29 @@ function Login({updateUser}){
       body: JSON.stringify(user)
     }
 
-    fetch('/login', loginObj)
+    // const user = {
+      //     username: "nick",
+      //     password: "password"
+      // }
+  
+      // const loginObj = {
+      //     method: 'POST',
+      //     headers: {'Content-Type': 'application/json'},
+      //     body: JSON.stringify(user)
+      // }
+  
+  
+      // fetch('http://127.0.0.1:3000/login', loginObj)
+      // .then(r => r.json())
+      // .then(data => console.log(data))
+
+    fetch('http://127.0.0.1:3000/login', loginObj)
     .then(r => {
       if (r.ok) {
         r.json().then(user => {
-          alert(user);
-          // FIXME: Uncomment when complete
-          // updateUser(user);
-          // history.push(`/users/${user.id}`)
+          console.log(user);
+          updateUser(user);
+          // navigate(`/albums`)
         })
       } else {
         r.json().then(json => setErrors(json.error))
@@ -41,8 +56,8 @@ function Login({updateUser}){
 
   const handleChange = (e) => {
     const {name, value} = e.target;
-    console.log('name:', name);
-    console.log('value:', value);
+    // console.log('name:', name);
+    // console.log('value:', value);
     setFormData({...formData, [name]: value});
   }
 

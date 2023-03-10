@@ -15,7 +15,7 @@ function NavBar() {
           </Nav>
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className="justify-content-end">
-              Signed in as: <a href="#login">Mark Otto</a>
+              Signed in as: <a href="#login">BCrypt Sucks</a>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
